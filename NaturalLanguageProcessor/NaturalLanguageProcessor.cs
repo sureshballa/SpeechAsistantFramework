@@ -64,29 +64,32 @@ namespace NaturalLanguageProcessor {
 			Dictionary<string, List<string>> parameters = new Dictionary<string, List<string>> ();
 			var words = speechText.Split (' ').ToList ();
 			entities.ForEach (entity => {
-				var matches = from w in words
-							  where entity.Values.Contains (w)
-							  select w;
+				if (entity.RegexParametersMetaData == null) {
+					var matches = from w in words
+								  where entity.Values.Contains (w)
+								  select w;
 
-				if (matches.Any ()) {
-					parameters.Add (entity.Name, matches.ToList ());
-				}
-			});
-
-			//Process for regular expressions
-			entities.ForEach (entity => {
-				entity.Values.ForEach (val => {
-					var match = Regex.Match (speechText, val);
-					if (match.Success) {
-						var matchedSubstring = match.Value;
-
-						var values = Regex.Split (matchedSubstring, @"\D+")
-						                  .Where(s => !string.IsNullOrWhiteSpace(s)) ;
-
-						if (!parameters.ContainsKey(entity.Name))
-							parameters.Add (entity.Name, values.ToList());
+					if (matches.Any ()) {
+						parameters.Add (entity.Name, matches.ToList ());
 					}
-				});
+				} else {
+					entity.Values.ForEach (val => {
+						var match = Regex.Match (speechText, val);
+						if (match.Success) {
+							var matchedSubstring = match.Value;
+
+							entity.RegexParametersMetaData.ForEach (parameterMetaData => {
+								if (parameterMetaData.Type == "number") {
+									var values = Regex.Split (matchedSubstring, @"\D+")
+									                  .Where (s => !string.IsNullOrWhiteSpace (s)).ToList();
+
+									if (!parameters.ContainsKey (entity.Name))
+										parameters.Add (parameterMetaData.Name, new List<string> () { values[entity.RegexParametersMetaData.IndexOf(parameterMetaData)] });
+								}
+							});
+						}
+					});
+				}
 			});
 
 			if (parameters.Count () > 0)

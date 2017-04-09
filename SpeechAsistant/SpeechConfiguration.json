@@ -69,6 +69,10 @@
     "entities": [
       {
         "name": "bed",
+		"regexParametersMetaData": [{
+					"name": "bed",
+					"type": "number"
+		}],
         "values": [
 			"\\d beds|bed",
 			"beds|deb \\d"
@@ -76,9 +80,28 @@
       },
       {
         "name": "bath",
+		"regexParametersMetaData": [{
+					"name": "bed",
+					"type": "number"
+		}],
         "values": [
 			"baths|bath \\d",
 			"\\d baths|bath"
+        ]
+      },
+	  {
+        "name": "pricerange",
+		"regexParametersMetaData": [{
+					"name": "minprice",
+					"type": "number"
+				},
+				{
+					"name": "maxprice",
+					"type": "number"
+		}],
+        "values": [
+          "between \\d to \\d",        
+          "within \\d to \\d",
         ]
       }
     ]
