@@ -1,0 +1,86 @@
+﻿[
+  {
+    "intentName": "SearchRestuarants",
+    "Action": "SearchRestuarants",
+    "verbs": [
+      "show",
+      "list",
+      "get",
+      "search",
+      "look",
+      "explore"
+    ],
+    "keywords": [
+      "restaurant",
+      "restaurants",
+      "hotel",
+      "hotels",
+      "eating house",
+      "house",
+      "houses",
+      "place",
+      "places"
+    ],
+    "entities": [
+      {
+        "name": "location",
+        "values": [
+          "whitefield",
+          "richmond",
+          "jayanagar",
+          "brigade",
+          "indiranagar"
+        ]
+      },
+      {
+        "name": "cuisine",
+        "values": [
+          "chinese",
+          "japanese",
+          "indian",
+          "american"
+        ]
+      },
+      {
+        "name": "pricerange",
+        "values": [
+          "between /d to /d",        
+          "within /d to /d",
+        ]
+      }
+    ]
+  },
+	{
+    "intentName": "SearchProperties",
+    "Action": "SearchProperties",
+    "verbs": [
+      "show",
+      "list",
+      "get",
+      "search",
+      "look",
+      "explore"
+    ],
+    "keywords": [
+      "property",
+      "properties",
+      "homes"
+    ],
+    "entities": [
+      {
+        "name": "bed",
+        "values": [
+			"\\d beds|bed",
+			"beds|deb \\d"
+        ]
+      },
+      {
+        "name": "bath",
+        "values": [
+			"baths|bath \\d",
+			"\\d baths|bath"
+        ]
+      }
+    ]
+  }
+]
