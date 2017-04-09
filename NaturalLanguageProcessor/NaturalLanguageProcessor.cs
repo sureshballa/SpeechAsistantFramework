@@ -83,7 +83,7 @@ namespace NaturalLanguageProcessor {
 									var values = Regex.Split (matchedSubstring, @"\D+")
 									                  .Where (s => !string.IsNullOrWhiteSpace (s)).ToList();
 
-									if (!parameters.ContainsKey (entity.Name))
+									if (values.Any())
 										parameters.Add (parameterMetaData.Name, new List<string> () { values[entity.RegexParametersMetaData.IndexOf(parameterMetaData)] });
 								}
 							});
