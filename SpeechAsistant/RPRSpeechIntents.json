@@ -1,56 +1,5 @@
 ﻿[
   {
-    "intentName": "SearchRestuarants",
-    "Action": "SearchRestuarants",
-    "verbs": [
-      "show",
-      "list",
-      "get",
-      "search",
-      "look",
-      "explore"
-    ],
-    "keywords": [
-      "restaurant",
-      "restaurants",
-      "hotel",
-      "hotels",
-      "eating house",
-      "house",
-      "houses",
-      "place",
-      "places"
-    ],
-    "entities": [
-      {
-        "name": "location",
-        "values": [
-          "whitefield",
-          "richmond",
-          "jayanagar",
-          "brigade",
-          "indiranagar"
-        ]
-      },
-      {
-        "name": "cuisine",
-        "values": [
-          "chinese",
-          "japanese",
-          "indian",
-          "american"
-        ]
-      },
-      {
-        "name": "pricerange",
-        "values": [
-          "between /d to /d",        
-          "within /d to /d",
-        ]
-      }
-    ]
-  },
-	{
     "intentName": "SearchProperties",
     "Action": "SearchProperties",
 	"suggestions": [ "Show me properties in los angeles",
@@ -151,6 +100,12 @@
 			"\\d baths|bath"
         ]
       },
+      {
+        "name": "propertyType",
+        "values": [
+			"Single Family", "Condo", "Townhouse", "Apt", "Multi Family", "Farm", "Ranch", "Mobile", "Manufactured", "Coop", "Lot", "Land"
+        ]
+      },
 	  {
         "name": "pricerange",
 		"regexParametersMetaData": [{
@@ -166,6 +121,31 @@
           "within \\d to \\d",
         ]
       }
+    ]
+  },
+	{
+    "intentName": "GetDirections",
+    "Action": "GetDirections",
+	"suggestions": [ "get directions" ],
+    "verbs": [
+      "show",
+      "get"
+    ],
+    "keywords": [
+      "direction",
+      "directions",
+    ]
+  },
+	{
+    "intentName": "EnableTrafficCounts",
+    "Action": "EnableTrafficCounts",
+	"suggestions": [ "show traffic counts" ],
+    "verbs": [
+      "show",
+      "enable"
+    ],
+    "keywords": [
+      "traffic"
     ]
   }
 ]

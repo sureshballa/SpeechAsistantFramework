@@ -6,5 +6,9 @@
 	{
 		"name": "SearchResultsScreen",
 		"intents": [ "FilterProperties", "SortProperties" ]
+		},
+	{
+		"name": "PropertyDetailsScreen",
+		"intents": [ "GetDirections", "EnableTrafficCounts" ]
 		}
 ]

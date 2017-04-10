@@ -28,7 +28,10 @@ namespace NaturalLanguageProcessor {
 
 			if (matchingIntents.Any ()) {
 				var matchingEntity = matchingIntents.FirstOrDefault ();
-				var parameters = ProcessForEntities (matchingEntity.Entities, speechText);
+				Dictionary<string, List<string>> parameters = null;
+
+				if(matchingEntity.Entities != null && matchingEntity.Entities.Any())
+					parameters = ProcessForEntities (matchingEntity.Entities, speechText);
 
 				return new IntentResult () {
 					Action = matchingEntity.Action,
@@ -49,8 +52,14 @@ namespace NaturalLanguageProcessor {
 										  where contextConfiguration.Intents.Contains (ic.IntentName)
 										  select ic;
 
-				if (intentConfigurations.Any ())
-					return intentConfigurations.FirstOrDefault ().Suggestions;
+				if (intentConfigurations.Any ()) {
+					var suggestions = new List<String> ();
+					intentConfigurations.ToList ().ForEach (ic => {
+						suggestions.AddRange (ic.Suggestions);
+					});
+
+					return suggestions;
+				}
 				else
 					return null;
 			} else
