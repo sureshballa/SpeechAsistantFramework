@@ -21,5 +21,8 @@ namespace NaturalLanguageProcessor {
 
 			[JsonProperty (PropertyName = "action")]
 			public string Action { get; set; }
+
+			[JsonProperty (PropertyName = "suggestions")]
+			public List<string> Suggestions { get; set; }
 		}
 	}

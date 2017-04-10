@@ -9,10 +9,12 @@ namespace NaturalLanguageProcessor {
 		public NaturalLanguageProcessor () {
 		}
 
-		public List<IntentConfiguration> RulesConfigurations { get; private set; }
+		public List<IntentConfiguration> IntentConfigurations { get; private set; }
+		public List<ContextConfiguration> ContextConfigurations { get; private set; }
 
-		public void LoadConfigurationFile (List<IntentConfiguration> rulesConfigurations) {
-			this.RulesConfigurations = rulesConfigurations;
+		public void SetConfiguration (List<IntentConfiguration> intentConfigurations, List<ContextConfiguration> contextConfigurations) {
+			this.IntentConfigurations = intentConfigurations;
+			this.ContextConfigurations = contextConfigurations;
 		}
 
 		public IntentResult GetMatchingIntent (string speechText) {
@@ -20,7 +22,7 @@ namespace NaturalLanguageProcessor {
 			List<string> words = speechText.Split (' ').ToList ();
 
 			//For each config
-			var matchingIntents = from i in this.RulesConfigurations
+			var matchingIntents = from i in this.IntentConfigurations
 								  where ProcessForMatch (i, words)
 								  select i;
 
@@ -32,6 +34,25 @@ namespace NaturalLanguageProcessor {
 					Action = matchingEntity.Action,
 					Parameters = parameters
 				};
+			} else
+				return null;
+		}
+
+		public List<string> GetSuggestions (string contextName) {
+			var contextConfigurations = from cc in this.ContextConfigurations
+									   where cc.Name == contextName
+                                       select cc;
+
+			if (contextConfigurations.Any ()) {
+				var contextConfiguration = contextConfigurations.FirstOrDefault ();
+				var intentConfigurations = from ic in this.IntentConfigurations
+										  where contextConfiguration.Intents.Contains (ic.IntentName)
+										  select ic;
+
+				if (intentConfigurations.Any ())
+					return intentConfigurations.FirstOrDefault ().Suggestions;
+				else
+					return null;
 			} else
 				return null;
 		}
@@ -51,7 +72,7 @@ namespace NaturalLanguageProcessor {
 			bool result = false;
 
 			var matchingWords = from w in words
-								where keywords.Contains (w)
+								where keywords.Contains (w, StringComparer.OrdinalIgnoreCase)
 								select w;
 
 			if (matchingWords.Any ())
@@ -66,7 +87,7 @@ namespace NaturalLanguageProcessor {
 			entities.ForEach (entity => {
 				if (entity.RegexParametersMetaData == null) {
 					var matches = from w in words
-								  where entity.Values.Contains (w)
+								  where entity.Values.Contains (w, StringComparer.OrdinalIgnoreCase)
 								  select w;
 
 					if (matches.Any ()) {

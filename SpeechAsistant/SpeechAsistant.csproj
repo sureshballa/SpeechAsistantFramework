@@ -48,7 +48,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SpeechConfiguration.json">
+    <Content Include="RPRSpeechIntents.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RPRScreenContexts.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

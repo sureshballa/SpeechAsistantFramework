@@ -53,6 +53,9 @@
 	{
     "intentName": "SearchProperties",
     "Action": "SearchProperties",
+	"suggestions": [ "Show me properties in los angeles",
+			"List all 2 beds properties in woodland hills",
+			"Get me properties in Irvine within price range of 2m to 3m"],
     "verbs": [
       "show",
       "list",
@@ -65,6 +68,65 @@
       "property",
       "properties",
       "homes"
+    ],
+    "entities": [
+      {
+        "name": "bed",
+		"regexParametersMetaData": [{
+					"name": "bed",
+					"type": "number"
+		}],
+        "values": [
+			"\\d beds|bed",
+			"beds|deb \\d"
+        ]
+      },
+      {
+        "name": "bath",
+		"regexParametersMetaData": [{
+					"name": "bed",
+					"type": "number"
+		}],
+        "values": [
+			"baths|bath \\d",
+			"\\d baths|bath"
+        ]
+      },
+	  {
+        "name": "pricerange",
+		"regexParametersMetaData": [{
+					"name": "minprice",
+					"type": "number"
+				},
+				{
+					"name": "maxprice",
+					"type": "number"
+		}],
+        "values": [
+          "between \\d to \\d",        
+          "within \\d to \\d",
+		  "price range of \\dm to \\dm"
+        ]
+      }
+    ]
+  },
+	{
+    "intentName": "FilterProperties",
+    "Action": "FilterProperties",
+	"suggestions": [ "Show properties within price range from 2m to 5m",
+			"Show only Condo",
+			"Show only 2 beds and 2 baths"],
+    "verbs": [
+      "show",
+      "include",
+      "get",
+      "filter"
+    ],
+    "keywords": [
+      "property",
+      "properties",
+      "only",
+	  "filter"
     ],
     "entities": [
       {
