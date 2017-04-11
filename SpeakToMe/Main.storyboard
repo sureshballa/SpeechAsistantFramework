@@ -55,12 +55,12 @@
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xe-MP-Nm9">
-                                <rect key="frame" x="137.5" y="587" width="100" height="50"/>
+                                <rect key="frame" x="162.5" y="587" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="h13-UR-rZ2"/>
-                                    <constraint firstAttribute="width" constant="100" id="sH4-L0-cdE"/>
+                                    <constraint firstAttribute="width" constant="50" id="sH4-L0-cdE"/>
                                 </constraints>
-                                <state key="normal" title="Start Recording!" image=" " backgroundImage="microphone.png">
+                                <state key="normal" image=" " backgroundImage="microphone.png">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>

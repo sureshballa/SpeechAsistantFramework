@@ -60,7 +60,7 @@ namespace SpeakToMe
 
 			this.pickerView.Model = new ScreensModel (this, nlp.ContextConfigurations.Select(cc => cc.Name).ToList());
 
-			speechIdleTimer = new System.Timers.Timer (5 * 1000);
+			speechIdleTimer = new System.Timers.Timer (3 * 1000);
 			speechIdleTimer.Elapsed += (sender, e) => {
 				this.stopSpeechRecognition ();
 				speechIdleTimer.Stop ();
@@ -108,7 +108,7 @@ namespace SpeakToMe
 
 			var audioSession = AVAudioSession.SharedInstance ();
 			NSError err;
-			err = audioSession.SetCategory (AVAudioSessionCategory.PlayAndRecord);
+			err = audioSession.SetCategory (AVAudioSessionCategory.PlayAndRecord, AVAudioSessionCategoryOptions.DefaultToSpeaker);
 			audioSession.SetMode (AVAudioSession.ModeMeasurement, out err);
 			err = audioSession.SetActive (true, AVAudioSessionSetActiveOptions.NotifyOthersOnDeactivation);
 
@@ -149,7 +149,7 @@ namespace SpeakToMe
 						var su = new AVSpeechUtterance (resultText) {
 							Rate = AVSpeechUtterance.MaximumSpeechRate / 2,
 							Voice = AVSpeechSynthesisVoice.FromLanguage ("en-US"),
-							PitchMultiplier = 1.0f
+							PitchMultiplier = 1.0f,
 						};
 
 						ss.SpeakUtterance (su);
@@ -160,7 +160,7 @@ namespace SpeakToMe
 					recognitionRequest = null;
 					recognitionTask = null;
 					recordButton.Enabled = true;
-					recordButton.SetTitle ("Start Recording", UIControlState.Normal);
+					//recordButton.SetTitle ("Start Recording", UIControlState.Normal);
 				}
 			});
 
@@ -181,10 +181,10 @@ namespace SpeakToMe
 		{
 			if (available) {
 				recordButton.Enabled = true;
-				recordButton.SetTitle ("Start Recording", UIControlState.Normal);
+				//recordButton.SetTitle ("Start Recording", UIControlState.Normal);
 			} else {
 				recordButton.Enabled = false;
-				recordButton.SetTitle ("Recognition not available", UIControlState.Disabled);
+				//recordButton.SetTitle ("Recognition not available", UIControlState.Disabled);
 			}
 		}
 
@@ -199,10 +199,10 @@ namespace SpeakToMe
 				audioEngine.Stop ();
 				recognitionRequest?.EndAudio ();
 				recordButton.Enabled = false;
-				recordButton.SetTitle ("Stopping", UIControlState.Disabled);
+				//recordButton.SetTitle ("Stopping", UIControlState.Disabled);
 			} else {
 				StartRecording ();
-				recordButton.SetTitle ("Stop recording", UIControlState.Normal);
+				//recordButton.SetTitle ("Stop recording", UIControlState.Normal);
 				speechIdleTimer.Start ();
 			}
 		}
@@ -211,7 +211,7 @@ namespace SpeakToMe
 			audioEngine.Stop ();
 			recognitionRequest?.EndAudio ();
 			recordButton.Enabled = false;
-			recordButton.SetTitle ("Stopping", UIControlState.Disabled);
+			//recordButton.SetTitle ("Stopping", UIControlState.Disabled);
 		}
 
 		partial void selectScreenButton_Click (Foundation.NSObject sender) {
