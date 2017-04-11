@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Images.xcassets\microphone.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
@@ -148,6 +149,12 @@
     <ImageAsset Include="Images.xcassets\splash-xamagon.imageset\splash-xamagon.png" />
     <ImageAsset Include="Images.xcassets\splash-xamagon.imageset\splash-xamagon%402x.png" />
     <ImageAsset Include="Images.xcassets\splash-xamagon.imageset\splash-xamagon%403x.png" />
+    <ImageAsset Include="Images.xcassets\microphone.imageset\4c96MrGoi.png" />
+    <ImageAsset Include="Images.xcassets\microphone.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\microphone.imageset\4c96MrGoi-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\microphone.imageset\4c96MrGoi-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\microphone.imageset\4c96MrGoi-3.png" />
+    <ImageAsset Include="Resources\Images.xcassets\microphone.imageset\4c96MrGoi-4.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpeechAssistantFramework\SpeechAssistantFramework.csproj">
@@ -162,6 +169,9 @@
     <BundleResource Include="RPRSpeechIntents.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\microphone.png" />
+    <BundleResource Include="Resources\microphone%403x.png" />
+    <BundleResource Include="Resources\microphone%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

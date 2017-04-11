@@ -1,0 +1,111 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "4c96MrGoi.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "4c96MrGoi.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "4c96MrGoi.png",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "4c96MrGoi.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "4c96MrGoi-1.png",
+      "subtype" : "retina4",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "4c96MrGoi.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "4c96MrGoi.png",
+      "subtype" : "retina4",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "4c96MrGoi.png",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "4c96MrGoi-2.png",
+      "subtype" : "retina4",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad"
+    },
+    {
+      "idiom" : "ipad",
+      "filename" : "4c96MrGoi-3.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "filename" : "4c96MrGoi-4.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "watch"
+    },
+    {
+      "idiom" : "watch",
+      "screen-width" : "<=145"
+    },
+    {
+      "idiom" : "watch",
+      "screen-width" : ">145"
+    },
+    {
+      "idiom" : "watch",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "watch",
+      "scale" : "2x",
+      "screen-width" : "<=145"
+    },
+    {
+      "idiom" : "watch",
+      "scale" : "2x",
+      "screen-width" : ">145"
+    },
+    {
+      "idiom" : "mac"
+    },
+    {
+      "idiom" : "mac",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
