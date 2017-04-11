@@ -141,8 +141,14 @@ namespace SpeakToMe
 						var intent = nlp.GetMatchingIntent (result.BestTranscription.FormattedString);
 
 						string resultText;
-						if (intent != null)
-							resultText = intent.Action;
+						if (intent != null) {
+							resultText = "Action is " + intent.Action + ". ";
+							if (intent.Parameters != null) {
+								intent.Parameters.ForEach (p => {
+									resultText += "Parameter " + p.Key + " with values" + string.Join (",", p.Value) + ". ";
+								});
+							}
+						}
 						else
 							resultText = "Sorry, I did not get that.";
 
@@ -150,6 +156,7 @@ namespace SpeakToMe
 							Rate = AVSpeechUtterance.MaximumSpeechRate / 2,
 							Voice = AVSpeechSynthesisVoice.FromLanguage ("en-US"),
 							PitchMultiplier = 1.0f,
+							Volume = 1
 						};
 
 						ss.SpeakUtterance (su);

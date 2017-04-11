@@ -52,7 +52,7 @@
 					"type": "number"
 		}],
         "values": [
-          "between \\d to \\d",        
+          "between [1-9][0-9]* to [1-9][0-9]*",        
           "within \\d to \\d",
 		  "price range of \\dm to \\dm"
         ]
