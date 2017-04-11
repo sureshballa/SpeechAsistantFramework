@@ -14,12 +14,31 @@ namespace SpeakToMe
 	{
 		[Outlet]
 		UIKit.UIPickerView pickerView { get; set; }
+
+		[Outlet]
+		UIKit.UITextView selectedScreenTextView { get; set; }
+
+		[Outlet]
+		UIKit.UIButton selectScreenButton { get; set; }
+
+		[Action ("selectScreenButton_Click:")]
+		partial void selectScreenButton_Click (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (pickerView != null) {
 				pickerView.Dispose ();
 				pickerView = null;
+			}
+
+			if (selectScreenButton != null) {
+				selectScreenButton.Dispose ();
+				selectScreenButton = null;
+			}
+
+			if (selectedScreenTextView != null) {
+				selectedScreenTextView.Dispose ();
+				selectedScreenTextView = null;
 			}
 		}
 	}

@@ -18,6 +18,8 @@ namespace SpeakToMe
 		SFSpeechAudioBufferRecognitionRequest recognitionRequest;
 		SFSpeechRecognitionTask recognitionTask;
 		NaturalLanguageProcessor.NaturalLanguageProcessor nlp;
+		System.Timers.Timer speechIdleTimer;
+
 
 		AVSpeechSynthesizer ss = new AVSpeechSynthesizer ();
 
@@ -57,6 +59,13 @@ namespace SpeakToMe
 			recordButton.Enabled = false;
 
 			this.pickerView.Model = new ScreensModel (this, nlp.ContextConfigurations.Select(cc => cc.Name).ToList());
+
+			speechIdleTimer = new System.Timers.Timer (5 * 1000);
+			speechIdleTimer.Elapsed += (sender, e) => {
+				this.stopSpeechRecognition ();
+				speechIdleTimer.Stop ();
+			};
+
 		}
 
 		public override void ViewDidAppear (bool animated)
@@ -96,6 +105,7 @@ namespace SpeakToMe
 			recognitionTask?.Cancel ();
 			recognitionTask = null;
 
+
 			var audioSession = AVAudioSession.SharedInstance ();
 			NSError err;
 			err = audioSession.SetCategory (AVAudioSessionCategory.PlayAndRecord);
@@ -104,18 +114,22 @@ namespace SpeakToMe
 
 			// Configure request so that results are returned before audio recording is finished
 			recognitionRequest = new SFSpeechAudioBufferRecognitionRequest {
-				ShouldReportPartialResults = true
+				ShouldReportPartialResults = true,
 			};
 
 			var inputNode = audioEngine.InputNode;
 			if (inputNode == null)
 				throw new InvalidProgramException ("Audio engine has no input node");
 
+
 			// A recognition task represents a speech recognition session.
 			// We keep a reference to the task so that it can be cancelled.
 			recognitionTask = speechRecognizer.GetRecognitionTask (recognitionRequest, (result, error) => {
 				var isFinal = false;
 				if (result != null) {
+					speechIdleTimer.Stop ();
+					speechIdleTimer.Start ();
+
 					textView.Text = result.BestTranscription.FormattedString;
 
 					isFinal = result.Final;
@@ -123,21 +137,23 @@ namespace SpeakToMe
 
 				if (error != null || isFinal) {
 
-					var intent = nlp.GetMatchingIntent (result.BestTranscription.FormattedString);
+					if (result != null) {
+						var intent = nlp.GetMatchingIntent (result.BestTranscription.FormattedString);
 
-					string resultText;
-					if (intent != null)
-						resultText = intent.Action;
-					else
-						resultText = "Sorry, I did not get that.";
+						string resultText;
+						if (intent != null)
+							resultText = intent.Action;
+						else
+							resultText = "Sorry, I did not get that.";
 
-					var su = new AVSpeechUtterance (resultText) {
-						Rate = AVSpeechUtterance.MaximumSpeechRate / 2,
-						Voice = AVSpeechSynthesisVoice.FromLanguage ("en-US"),
-						PitchMultiplier = 1.0f
-					};
+						var su = new AVSpeechUtterance (resultText) {
+							Rate = AVSpeechUtterance.MaximumSpeechRate / 2,
+							Voice = AVSpeechSynthesisVoice.FromLanguage ("en-US"),
+							PitchMultiplier = 1.0f
+						};
 
-					ss.SpeakUtterance (su);
+						ss.SpeakUtterance (su);
+					}
 
 					audioEngine.Stop ();
 					inputNode.RemoveTapOnBus (0);
@@ -156,10 +172,6 @@ namespace SpeakToMe
 			audioEngine.Prepare ();
 			audioEngine.StartAndReturnError (out err);
 			textView.Text = "(Go ahead, I'm listening)";
-
-
-
-
 		}
 
 		#region ISFSpeechRecognizerDelegate
@@ -191,15 +203,30 @@ namespace SpeakToMe
 			} else {
 				StartRecording ();
 				recordButton.SetTitle ("Stop recording", UIControlState.Normal);
+				speechIdleTimer.Start ();
 			}
+		}
+
+		private void stopSpeechRecognition () {
+			audioEngine.Stop ();
+			recognitionRequest?.EndAudio ();
+			recordButton.Enabled = false;
+			recordButton.SetTitle ("Stopping", UIControlState.Disabled);
+		}
+
+		partial void selectScreenButton_Click (Foundation.NSObject sender) {
+			this.pickerView.Hidden = false;
 		}
 
 		#endregion
 
-		public void DisplaySuggestions (string screenName) {
+		public void SelectScreen (string screenName) {
 			var suggestions = this.nlp.GetSuggestions (screenName);
 
 			textView.Text = string.Join ("\n", suggestions);
+			this.selectedScreenTextView.Text = screenName;
+
+			this.pickerView.Hidden = true;
 		}
 	}
 
@@ -235,7 +262,7 @@ namespace SpeakToMe
 		}
 
 		public override void Selected (UIPickerView picker, nint row, nint component) {
-			this.viewController.DisplaySuggestions (screens [(int)row]);
+			this.viewController.SelectScreen (screens [(int)row]);
 		}
 
 		public override nfloat GetComponentWidth (UIPickerView picker, nint component) {

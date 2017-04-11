@@ -27,7 +27,7 @@
 		}],
         "values": [
 			"\\d beds|bed",
-			"beds|deb \\d"
+			"beds|bed \\d"
         ]
       },
       {
