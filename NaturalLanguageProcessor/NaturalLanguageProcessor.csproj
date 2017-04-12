@@ -38,6 +38,7 @@
     <Compile Include="IntentResult.cs" />
     <Compile Include="NaturalLanguageProcessor.cs" />
     <Compile Include="ContextConfiguration.cs" />
+    <Compile Include="RegexEqualityComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

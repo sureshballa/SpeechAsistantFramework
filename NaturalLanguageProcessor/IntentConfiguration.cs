@@ -16,6 +16,9 @@ namespace NaturalLanguageProcessor {
 			[JsonProperty (PropertyName = "keywords")]
 			public List<string> Keywords { get; set; }
 
+			[JsonProperty (PropertyName = "considerInputTextAsParameter")]
+			public bool ConsiderInputTextAsParameter { get; set; }
+
 			[JsonProperty (PropertyName = "entities")]
 			public List<Entity> Entities { get; set; }
 
