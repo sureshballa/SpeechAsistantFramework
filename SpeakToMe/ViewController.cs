@@ -142,10 +142,12 @@ namespace SpeakToMe
 
 						string resultText;
 						if (intent != null) {
+							textView.Text += "\nAction is "  + intent.Action + ".";
 							resultText = "Action is " + intent.Action + ". ";
 							if (intent.Parameters != null) {
 								intent.Parameters.ForEach (p => {
 									resultText += "Parameter " + p.Key + " with values" + string.Join (",", p.Value) + ". ";
+									textView.Text += "\nParameter " + p.Key + " with values " + string.Join (",", p.Value) + ". ";
 								});
 							}
 						}
@@ -168,6 +170,9 @@ namespace SpeakToMe
 					recognitionTask = null;
 					recordButton.Enabled = true;
 					//recordButton.SetTitle ("Start Recording", UIControlState.Normal);
+					recordButton.Hidden = false;
+					recordStatus.Hidden = true;
+					speechIdleTimer.Stop ();
 				}
 			});
 
@@ -178,7 +183,6 @@ namespace SpeakToMe
 
 			audioEngine.Prepare ();
 			audioEngine.StartAndReturnError (out err);
-			textView.Text = "(Go ahead, I'm listening)";
 		}
 
 		#region ISFSpeechRecognizerDelegate
@@ -209,7 +213,8 @@ namespace SpeakToMe
 				//recordButton.SetTitle ("Stopping", UIControlState.Disabled);
 			} else {
 				StartRecording ();
-				//recordButton.SetTitle ("Stop recording", UIControlState.Normal);
+				recordButton.Hidden = true;
+				recordStatus.Hidden = false;
 				speechIdleTimer.Start ();
 			}
 		}
@@ -219,6 +224,8 @@ namespace SpeakToMe
 			recognitionRequest?.EndAudio ();
 			recordButton.Enabled = false;
 			//recordButton.SetTitle ("Stopping", UIControlState.Disabled);
+			recordButton.Hidden = false;
+			recordStatus.Hidden = true;
 		}
 
 		partial void selectScreenButton_Click (Foundation.NSObject sender) {
