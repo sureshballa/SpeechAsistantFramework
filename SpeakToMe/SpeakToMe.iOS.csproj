@@ -128,7 +128,6 @@
     <ImageAsset Include="Images.xcassets\AppIcons.appiconset\icon-app-76.png" />
     <ImageAsset Include="Images.xcassets\AppIcons.appiconset\icon-app-76%402x.png" />
     <ImageAsset Include="Images.xcassets\AppIcons.appiconset\icon-carplay-120.png" />
-    <ImageAsset Include="Images.xcassets\AppIcons.appiconset\icon-spotlight-29.png" />
     <ImageAsset Include="Images.xcassets\AppIcons.appiconset\icon-spotlight-29%402x.png" />
     <ImageAsset Include="Images.xcassets\AppIcons.appiconset\icon-spotlight-29%403x.png" />
     <ImageAsset Include="Images.xcassets\AppIcons.appiconset\icon-spotlight-40.png" />
@@ -146,15 +145,13 @@
     <ImageAsset Include="Images.xcassets\AppIcons.appiconset\icon-watch-48.png" />
     <ImageAsset Include="Images.xcassets\AppIcons.appiconset\icon-watch-55.png" />
     <ImageAsset Include="Images.xcassets\splash-xamagon.imageset\Contents.json" />
-    <ImageAsset Include="Images.xcassets\splash-xamagon.imageset\splash-xamagon.png" />
-    <ImageAsset Include="Images.xcassets\splash-xamagon.imageset\splash-xamagon%402x.png" />
-    <ImageAsset Include="Images.xcassets\splash-xamagon.imageset\splash-xamagon%403x.png" />
     <ImageAsset Include="Images.xcassets\microphone.imageset\4c96MrGoi.png" />
     <ImageAsset Include="Images.xcassets\microphone.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\microphone.imageset\4c96MrGoi-1.png" />
     <ImageAsset Include="Resources\Images.xcassets\microphone.imageset\4c96MrGoi-2.png" />
     <ImageAsset Include="Resources\Images.xcassets\microphone.imageset\4c96MrGoi-3.png" />
     <ImageAsset Include="Resources\Images.xcassets\microphone.imageset\4c96MrGoi-4.png" />
+    <ImageAsset Include="Images.xcassets\splash-xamagon.imageset\microphone.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpeechAssistantFramework\SpeechAssistantFramework.csproj">

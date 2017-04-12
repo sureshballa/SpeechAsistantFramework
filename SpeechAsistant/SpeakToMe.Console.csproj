@@ -42,9 +42,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NaturalLanguageProcessor\NaturalLanguageProcessor.csproj">
-      <Project>{01BAA192-6253-4BBA-BC86-2112F1466B14}</Project>
-      <Name>NaturalLanguageProcessor</Name>
+    <ProjectReference Include="..\SpeechAssistantFramework\SpeechAssistantFramework.csproj">
+      <Project>{223E2AA8-31C5-4B77-B66B-2617D2454A61}</Project>
+      <Name>SpeechAssistantFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
