@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakToMe.iOS", "SpeakToMe\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechAssistantFramework", "SpeechAssistantFramework\SpeechAssistantFramework.csproj", "{223E2AA8-31C5-4B77-B66B-2617D2454A61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakToMe.Droid", "SpeakToMe.Droid\SpeakToMe.Droid.csproj", "{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -53,5 +55,17 @@ Global
 		{223E2AA8-31C5-4B77-B66B-2617D2454A61}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{223E2AA8-31C5-4B77-B66B-2617D2454A61}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{223E2AA8-31C5-4B77-B66B-2617D2454A61}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Debug|x86.Build.0 = Debug|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Release|x86.ActiveCfg = Release|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Release|x86.Build.0 = Release|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Release|iPhone.Build.0 = Release|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{BC27BEC3-FFC6-4D96-9EFA-E82679DD43DF}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
