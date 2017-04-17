@@ -27,8 +27,8 @@
 					"type": "number"
 		}],
         "values": [
-			"\b(beds|bed) ([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine)\b",
-			"\b([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine) (beds|bed)\b"
+			"\\b(beds|bed) ([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine)\\b",
+			"\\b([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine) (beds|bed)\\b"
         ]
       },
       {
@@ -38,8 +38,8 @@
 					"type": "number"
 		}],
         "values": [
-			"\b(baths|bath) ([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine)\b",
-			"\b([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine) (baths|bath)\b"
+			"\\b(baths|bath) ([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine)\\b",
+			"\\b([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine) (baths|bath)\\b"
         ]
       },
 	  {
@@ -98,8 +98,8 @@
 					"type": "number"
 		}],
         "values": [
-			"\b(beds|bed) ([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine)\b",
-			"\b([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine) (beds|bed)\b"
+			"\\b(beds|bed) ([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine)\\b",
+			"\\b([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine) (beds|bed)\\b"
         ]
       },
       {
@@ -109,8 +109,8 @@
 					"type": "number"
 		}],
         "values": [
-			"\b(baths|bath) ([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine)\b",
-			"\b([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine) (baths|bath)\b"
+			"\\b(baths|bath) ([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine)\\b",
+			"\\b([1-9][0-9]*|one|two|three|four|five|six|seven|eight|nine) (baths|bath)\\b"
         ]
       },
       {
